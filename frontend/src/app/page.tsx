@@ -9,7 +9,7 @@ import {
   TextField,
   Button,
   Box,
-  ToggleButtonGroup,
+  ToggleButtonGroup,  
   ToggleButton,
 } from '@mui/material';
 import Cookies from 'js-cookie';
@@ -273,56 +273,77 @@ export default function TodosPage() {
         {/* Controles de filtrado */}
         <Box sx={{ mb: 3, display: 'flex', justifyContent: 'center' }}>
           <ToggleButtonGroup
-            value={filter}
-            exclusive
-            onChange={(event, newFilter) => {
-              setFilter(newFilter ?? 'all');
-            }}
-            aria-label="Filtrar tareas"
-          >
-            <ToggleButton
-              value="all"
-              aria-label="Todas"
-              sx={{
-                bgcolor: filter === 'all' ? 'primary.main' : 'grey.200',
-                color: filter === 'all' ? 'white' : 'black',
-                fontWeight: filter === 'all' ? 'bold' : 'normal',
-                '&:hover': {
-                  bgcolor: filter === 'all' ? 'primary.dark' : 'grey.300',
-                },
-              }}
-            >
-              Todas
-            </ToggleButton>
-            <ToggleButton
-              value="pending"
-              aria-label="Pendientes"
-              sx={{
-                bgcolor: filter === 'pending' ? 'primary.main' : 'grey.200',
-                color: filter === 'pending' ? 'white' : 'black',
-                fontWeight: filter === 'pending' ? 'bold' : 'normal',
-                '&:hover': {
-                  bgcolor: filter === 'pending' ? 'primary.dark' : 'grey.300',
-                },
-              }}
-            >
-              Pendientes
-            </ToggleButton>
-            <ToggleButton
-              value="completed"
-              aria-label="Completadas"
-              sx={{
-                bgcolor: filter === 'completed' ? 'primary.main' : 'grey.200',
-                color: filter === 'completed' ? 'white' : 'black',
-                fontWeight: filter === 'completed' ? 'bold' : 'normal',
-                '&:hover': {
-                  bgcolor: filter === 'completed' ? 'primary.dark' : 'grey.300',
-                },
-              }}
-            >
-              Completadas
-            </ToggleButton>
-          </ToggleButtonGroup>
+  value={filter}
+  exclusive
+  onChange={(event, newFilter) => {
+    setFilter(newFilter ?? 'all');
+  }}
+  aria-label="Filtrar tareas"
+>
+  <ToggleButton
+    value="all"
+    aria-label="Todas"
+    sx={{
+      color: filter === 'all' ? '#ffffff' : '#1e293b',
+      backgroundColor: filter === 'all' ? '#3b82f6' : '#e5e7eb',
+      borderColor: '#cbd5e1',
+      '&:hover': {
+        backgroundColor: filter === 'all' ? '#2563eb' : '#d1d5db',
+      },
+      '&.Mui-selected': {
+        color: '#ffffff',
+        backgroundColor: '#3b82f6',
+        '&:hover': {
+          backgroundColor: '#2563eb',
+        },
+      },
+    }}
+  >
+    Todas
+  </ToggleButton>
+  <ToggleButton
+    value="pending"
+    aria-label="Pendientes"
+    sx={{
+      color: filter === 'pending' ? '#ffffff' : '#1e293b',
+      backgroundColor: filter === 'pending' ? '#3b82f6' : '#e5e7eb',
+      borderColor: '#cbd5e1',
+      '&:hover': {
+        backgroundColor: filter === 'pending' ? '#2563eb' : '#d1d5db',
+      },
+      '&.Mui-selected': {
+        color: '#ffffff',
+        backgroundColor: '#3b82f6',
+        '&:hover': {
+          backgroundColor: '#2563eb',
+        },
+      },
+    }}
+  >
+    Pendientes
+  </ToggleButton>
+  <ToggleButton
+    value="completed"
+    aria-label="Completadas"
+    sx={{
+      color: filter === 'completed' ? '#ffffff' : '#1e293b',
+      backgroundColor: filter === 'completed' ? '#3b82f6' : '#e5e7eb',
+      borderColor: '#cbd5e1',
+      '&:hover': {
+        backgroundColor: filter === 'completed' ? '#2563eb' : '#d1d5db',
+      },
+      '&.Mui-selected': {
+        color: '#ffffff',
+        backgroundColor: '#3b82f6',
+        '&:hover': {
+          backgroundColor: '#2563eb',
+        },
+      },
+    }}
+  >
+    Completadas
+  </ToggleButton>
+</ToggleButtonGroup>
         </Box>
 
         {/* Sección para crear una nueva tarea */}
