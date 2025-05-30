@@ -267,10 +267,9 @@ export default function TodosPage() {
       <Header />
       <Container maxWidth="md" sx={{ mt: 4 }}>
         <Typography variant="h4" gutterBottom>
-          Lista de Tareas
+           Tus Tareas
         </Typography>
 
-        {/* Controles de filtrado */}
         <Box sx={{ mb: 3, display: 'flex', justifyContent: 'center' }}>
           <ToggleButtonGroup
   value={filter}
@@ -346,7 +345,6 @@ export default function TodosPage() {
 </ToggleButtonGroup>
         </Box>
 
-        {/* Sección para crear una nueva tarea */}
         <Box sx={{ display: 'flex', mb: 4 }}>
           <TextField
             label="Título de la tarea"

@@ -108,7 +108,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
   };
 
   return (
-    <Card sx={{ mb: 3, borderRadius: 2, boxShadow: 3 }}>
+    <Card sx={{ mb: 3, borderRadius: 2, boxShadow: 3, bgcolor: 'background.paper', color: 'text.primary' }}>
       <CardHeader
         title={
           isEditing ? (
@@ -120,8 +120,16 @@ const TaskCard: React.FC<TaskCardProps> = ({
         subheader={
           isEditing ? (
             <FormControlLabel
-              control={<Switch checked={editedCompleted} onChange={(e) => setEditedCompleted(e.target.checked)} />}
+              control={
+                <Switch
+                  checked={!editedCompleted}
+                  onChange={(e) => setEditedCompleted(!e.target.checked)}
+                  color="primary"
+                  inputProps={{ 'aria-label': 'toggle completed' }}
+                />
+              }
               label={editedCompleted ? 'Completada' : 'Pendiente'}
+              labelPlacement="start"
             />
           ) : (
             <Typography variant="subtitle2" color={task.completed ? 'success.main' : 'text.secondary'}>
@@ -165,7 +173,6 @@ const TaskCard: React.FC<TaskCardProps> = ({
           </Box>
         )}
 
-        {/* SUBTAREAS */}
         <Box mb={2}>
           <Box display="flex" alignItems="center" mb={1}>
             <Typography variant="subtitle1" fontWeight="medium" flexGrow={1}>Subtareas</Typography>
@@ -182,7 +189,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
                   display="flex"
                   alignItems="center"
                   justifyContent="space-between"
-                  bgcolor="grey.100"
+                  bgcolor="grey.300"
                   p={1}
                   borderRadius={1}
                   mb={1}
@@ -259,7 +266,6 @@ const TaskCard: React.FC<TaskCardProps> = ({
 
         <Divider sx={{ my: 2 }} />
 
-        {/* COMENTARIOS */}
         <Box mb={2}>
           <Box display="flex" alignItems="center" mb={1}>
             <Typography variant="subtitle1" fontWeight="medium" flexGrow={1}>Comentarios</Typography>
@@ -276,7 +282,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
                   display="flex"
                   alignItems="center"
                   justifyContent="space-between"
-                  bgcolor="grey.100"
+                  bgcolor="grey.300"
                   p={1}
                   borderRadius={1}
                   mb={1}
@@ -301,7 +307,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
                     </>
                   ) : (
                     <>
-                      <Typography variant="body2">{comment.text}</Typography>
+                      <Typography variant="body2" color="text.primary">{comment.text}</Typography>
                       <Box>
                         <IconButton onClick={() => {
                           setEditingCommentId(comment._id);

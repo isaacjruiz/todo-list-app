@@ -25,7 +25,7 @@ export default function Header() {
     <AppBar position="static" color="default" elevation={1} sx={{ mb: 4 }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography variant="h6" color="inherit" component="div">
-          Todo List
+          Racoon List
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Typography variant="body1" color="textSecondary">
