@@ -40,7 +40,7 @@ MONGODB_URI=mongodb+srv://isaacjruiz:TBlQRV2AGPkgVHqO@my-todo-list.lsjgz5y.mongo
 JWT_SECRET=tnoqtCOmMNMSwy0ZybYhC5NtiutJxH7L92mLQHks6xLr/vcxBgnGt7rrvKuEduK/0LNt4N9SpIRzJpOM1xubMA==
 ```
 
-> ⚠️ **Importante**: No compartas tus variables `.env` públicamente. Este archivo debe estar en `.gitignore`.
+
 
 ---
 
