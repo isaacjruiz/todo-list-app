@@ -1,40 +1,88 @@
-# Todo List App
+# 📝 Todo List App - Fullstack
 
-Aplicación fullstack con frontend en **Next.js/React** y backend en **Node.js/Express**, conectada a una base de datos en MongoDB.
+Aplicación **Fullstack** para gestión de tareas construida con:
 
----
-
-## Instrucciones para ejecutar el proyecto localmente
-
-Este proyecto está dividido en dos carpetas:
-
-- `frontend/`: Aplicación web (Next.js + React)
-- `backend/`: API (Node.js + Express + MongoDB)
+- **Frontend**: [Next.js](https://nextjs.org/) + React  
+- **Backend**: [Node.js](https://nodejs.org/) + Express  
+- **Base de datos**: [MongoDB Atlas](https://www.mongodb.com/atlas)
 
 ---
 
-### Configurar las variables de entorno
+## 🚀 Requisitos Previos
 
-1. Crear un archivo .env en la carpeta de backend y añadir lo siguiente:
+Asegúrate de tener instalado:
 
+- Node.js (v18 o superior recomendado)
+- npm
+- MongoDB Atlas (ya configurado en este proyecto)
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+📦 todo-list-app/
+┣ 📂 frontend/   ← Cliente (Next.js + React)
+┣ 📂 backend/    ← Servidor (Express + MongoDB)
+```
+
+---
+
+## ⚙️ Configuración Inicial
+
+### 1. Variables de Entorno (Backend)
+
+Crea un archivo `.env` dentro del directorio `backend/` y copia lo siguiente:
+
+```env
 PORT=4000
-MONGODB_URI=mongodb+srv://alfaroga31:L0RJY1Pnc9NQthZh@todo-list-db.cjldznz.mongodb.net/?retryWrites=true&w=majority&appName=todo-list-db
+MONGODB_URI=mongodb+srv://isaacjruiz:TBlQRV2AGPkgVHqO@my-todo-list.lsjgz5y.mongodb.net/?retryWrites=true&w=majority&appName=my-todo-list
 JWT_SECRET=tnoqtCOmMNMSwy0ZybYhC5NtiutJxH7L92mLQHks6xLr/vcxBgnGt7rrvKuEduK/0LNt4N9SpIRzJpOM1xubMA==
+```
 
-2. Desde la carpeta backend, ejecuta:
+> ⚠️ **Importante**: No compartas tus variables `.env` públicamente. Este archivo debe estar en `.gitignore`.
 
-`npm install`
+---
 
-3. Desde la carpeta frontend, ejecuta:
+## 📦 Instalación de Dependencias
 
-`npm install`
+Desde la raíz del proyecto:
 
-### Ejecutar el proyecto
+```bash
+# Backend
+cd backend
+npm install
 
-1. Desde la carpeta backend:
+# Frontend
+cd ../frontend
+npm install
+```
 
-`node server.js`
+---
 
-2. Desde la carpeta frontend:
+## ▶️ Ejecutar la Aplicación
 
-`npm run dev`
+### 1. Iniciar el servidor (Backend)
+
+```bash
+cd backend
+node server.js
+```
+
+### 2. Iniciar el cliente (Frontend)
+
+```bash
+cd frontend
+npm run dev
+```
+
+La app estará disponible en: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🛠 Funcionalidades Básicas
+
+- Registro e inicio de sesión con JWT
+- Crear, editar, eliminar y completar tareas
+- Filtrado por estado: Todas, Pendientes, Completadas
+- Persistencia de datos en MongoDB Atlas
