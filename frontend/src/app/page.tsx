@@ -12,6 +12,7 @@ import {
   ToggleButtonGroup,
   ToggleButton,
 } from '@mui/material';
+import Cookies from 'js-cookie';
 
 export default function TodosPage() {
   const [todos, setTodos] = useState<Task[]>([]);
@@ -21,7 +22,7 @@ export default function TodosPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     if (!token) {
       router.push('/login');
     }
@@ -29,7 +30,7 @@ export default function TodosPage() {
 
   const fetchTasks = useCallback(async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch('http://localhost:4000/api/tasks', {
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +60,7 @@ export default function TodosPage() {
 
   const handleCreateTask = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch('http://localhost:4000/api/tasks', {
         method: 'POST',
         headers: {
@@ -81,7 +82,7 @@ export default function TodosPage() {
 
   const handleUpdate = async (updatedTask: Task) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const { _id, title, completed } = updatedTask;
       const res = await fetch(`http://localhost:4000/api/tasks/${_id}`, {
         method: 'PUT',
@@ -103,7 +104,7 @@ export default function TodosPage() {
 
   const handleDelete = async (taskId: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
@@ -121,7 +122,7 @@ export default function TodosPage() {
 
   const handleAddSubtask = async (taskId: string, subtaskTitle: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/subtasks`, {
         method: 'POST',
         headers: {
@@ -140,7 +141,7 @@ export default function TodosPage() {
 
   const handleToggleSubtask = async (taskId: string, subtaskId: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/subtasks/${subtaskId}/toggle`, {
         method: 'PUT',
         headers: {
@@ -158,7 +159,7 @@ export default function TodosPage() {
 
   const handleDeleteSubtask = async (taskId: string, subtaskId: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/subtasks/${subtaskId}`, {
         method: 'DELETE',
         headers: {
@@ -180,7 +181,7 @@ export default function TodosPage() {
     updatedData: { title?: string; completed?: boolean }
   ) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/subtasks/${subtaskId}`, {
         method: 'PUT',
         headers: {
@@ -201,7 +202,7 @@ export default function TodosPage() {
 
   const handleAddComment = async (taskId: string, commentText: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/comments`, {
         method: 'POST',
         headers: {
@@ -220,7 +221,7 @@ export default function TodosPage() {
 
   const handleDeleteComment = async (taskId: string, commentId: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/comments/${commentId}`, {
         method: 'DELETE',
         headers: {
@@ -242,7 +243,7 @@ export default function TodosPage() {
     updatedData: { text: string }
   ) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = Cookies.get('token');
       const res = await fetch(`http://localhost:4000/api/tasks/${taskId}/comments/${commentId}`, {
         method: 'PUT',
         headers: {
@@ -279,13 +280,46 @@ export default function TodosPage() {
             }}
             aria-label="Filtrar tareas"
           >
-            <ToggleButton value="all" aria-label="Todas">
+            <ToggleButton
+              value="all"
+              aria-label="Todas"
+              sx={{
+                bgcolor: filter === 'all' ? 'primary.main' : 'grey.200',
+                color: filter === 'all' ? 'white' : 'black',
+                fontWeight: filter === 'all' ? 'bold' : 'normal',
+                '&:hover': {
+                  bgcolor: filter === 'all' ? 'primary.dark' : 'grey.300',
+                },
+              }}
+            >
               Todas
             </ToggleButton>
-            <ToggleButton value="pending" aria-label="Pendientes">
+            <ToggleButton
+              value="pending"
+              aria-label="Pendientes"
+              sx={{
+                bgcolor: filter === 'pending' ? 'primary.main' : 'grey.200',
+                color: filter === 'pending' ? 'white' : 'black',
+                fontWeight: filter === 'pending' ? 'bold' : 'normal',
+                '&:hover': {
+                  bgcolor: filter === 'pending' ? 'primary.dark' : 'grey.300',
+                },
+              }}
+            >
               Pendientes
             </ToggleButton>
-            <ToggleButton value="completed" aria-label="Completadas">
+            <ToggleButton
+              value="completed"
+              aria-label="Completadas"
+              sx={{
+                bgcolor: filter === 'completed' ? 'primary.main' : 'grey.200',
+                color: filter === 'completed' ? 'white' : 'black',
+                fontWeight: filter === 'completed' ? 'bold' : 'normal',
+                '&:hover': {
+                  bgcolor: filter === 'completed' ? 'primary.dark' : 'grey.300',
+                },
+              }}
+            >
               Completadas
             </ToggleButton>
           </ToggleButtonGroup>

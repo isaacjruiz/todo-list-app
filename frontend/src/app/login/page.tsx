@@ -12,6 +12,7 @@ import {
   Alert,
   CircularProgress,
 } from '@mui/material';
+import Cookies from 'js-cookie';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -20,9 +21,16 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  interface User {
+    id: string;
+    name: string;
+    email: string;
+    // Add other user fields as needed
+  }
+
   interface LoginResponse {
     token: string;
-    user: Record<string, any>;
+    user: User;
     message?: string;
   }
 
@@ -42,8 +50,8 @@ export default function LoginPage() {
       const data: LoginResponse = await res.json();
 
       if (res.ok) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        Cookies.set('token', data.token, { sameSite: 'strict' });
+        Cookies.set('user', JSON.stringify(data.user), { sameSite: 'strict' });
         router.push('/');
       } else {
         setErrorMessage(data.message || 'Error al iniciar sesión');
